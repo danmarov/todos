@@ -1,7 +1,7 @@
 import { Todo } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import { Button } from "../ui/button";
-import { Trash2 } from "lucide-react";
+import { Trash2, Archive } from "lucide-react";
 import useTodos from "@/hooks/use-todos";
 
 const TodoCard = (item: Todo) => {
@@ -35,6 +35,12 @@ export default function TodoList({ todos }: TodoListProps) {
       {todos.map((item) => (
         <TodoCard key={item.id} {...item} />
       ))}
+      {todos.length === 0 && (
+        <p className="p-2 text-center font-medium gap-2 text-slate-300">
+          <Archive size={50} strokeWidth={1.5} className="mx-auto mb-2" />
+          Todo list is empty
+        </p>
+      )}
     </div>
   );
 }
